@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe.Name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">{{ recipe.Name }}</h1>
+    <p class="lead text-center">{{ recipe['Short Description'] }}</p>
+    <form method="post" class="mt-5">
+        <div class="form-group">
+            <label for="request">What would you like to know about this dish?</label>
+            <input type="text" class="form-control" id="request" name="request" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Get Information</button>
+    </form>
+    {% if content %}
+        <h3 class="mt-5">{{ content }}</h3>
+    {% elif fact %}
+        <h3 class="mt-5">Fact:</h3>
+        <p>{{ fact }}</p>
+    {% elif error %}
+        <div class="alert alert-warning mt-5" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
